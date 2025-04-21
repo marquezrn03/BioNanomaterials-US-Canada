@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US and Canada Landscape: Bio-Based Nanomaterials</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Styles (Green/Brown Theme) */
+        :root {
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --bg-color: #f8f9fa; --map-bg-color: #e9ecef; --border-color: #ced4da;
+            --text-color: #495057; --title-color: #588157; --popup-bg: #ffffff;
+            --popup-border: #dee2e6; --popup-title-color: #588157; --popup-section-header: #a3b18a;
+            --link-color: #3a5a40; --placeholder-color: #6c757d; --legend-bg: #ffffff; --legend-border: #dee2e6;
+            --uni-color-hex: '42a5f5'; --inst-color-hex: '66bb6a'; --comp-color-hex: 'ab47bc';
+            --pilot-color-hex: 'ffa726'; --network-color-hex: 'ec407a'; --other-color-hex: '8c96a0';
+        }
+        body { font-family: var(--font-family); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        h1 { margin: 30px 10px 15px 10px; color: var(--title-color); text-align: center; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; width: 90%; max-width: 1100px; font-size: 2em; letter-spacing: -0.5px; }
+        .disclaimer { font-size: 0.75em; color: var(--placeholder-color); width: 90%; max-width: 1100px; text-align: center; margin-bottom: 25px; border: 1px solid var(--popup-border); padding: 10px; background-color: var(--popup-bg); border-radius: 4px; }
+        #map { height: 78vh; width: 98%; max-width: 1800px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); margin-bottom: 25px; background-color: var(--map-bg-color); }
+        .legend { font-size: 0.8em; padding: 12px 18px; background-color: var(--legend-bg); border: 1px solid var(--legend-border); border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        .legend h4 { margin: 0 0 10px 0; font-size: 0.85em; color: var(--popup-section-header); text-transform: uppercase; letter-spacing: 0.8px; border-bottom: 1px solid var(--popup-border); padding-bottom: 6px; font-weight: 600; }
+        .legend div { margin-bottom: 5px; display: flex; align-items: center;}
+        .legend span { display: inline-block; width: 15px; height: 15px; margin-right: 10px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0; }
+        .leaflet-control-container .leaflet-control { box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 6px; border: 1px solid var(--border-color); }
+        .leaflet-control-layers { background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px); border-radius: 6px; padding: 10px; max-height: 65vh; overflow-y: auto; }
+        .leaflet-control-layers-base label, .leaflet-control-layers-overlays label { color: var(--text-color); font-size: 0.9em; display: flex; align-items: center; margin-bottom: 5px; cursor: pointer; font-weight: 500; }
+        .leaflet-control-layers-overlays label span { margin-left: 8px; }
+        .leaflet-control-layers-separator { border-top: 1px solid var(--popup-border); margin: 8px -10px; }
+        .layer-control-icon { width: 14px; height: 14px; margin-right: 0; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); vertical-align: middle; flex-shrink: 0; }
+        .leaflet-popup { transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+        .leaflet-popup-content-wrapper { border-radius: 8px; background-color: var(--popup-bg); border: 1px solid var(--popup-border); box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .leaflet-popup-content { font-size: 0.9em; line-height: 1.6; color: var(--text-color); max-height: 400px; overflow-y: auto; padding: 0; }
+        .leaflet-popup-content b.popup-title { font-size: 1.15em; color: var(--popup-title-color); font-weight: 600; display: block; margin: 0; padding: 12px 18px; border-bottom: 1px solid var(--popup-border); background-color: #f8f9fa; }
+        .popup-section { margin: 0; padding: 10px 18px; border-top: 1px solid #f1f1f1; }
+        .popup-section:first-of-type { border-top: none; }
+        .popup-section h4 { margin: 0 0 5px 0; font-size: 0.75em; color: var(--popup-section-header); font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .popup-section .content-text { font-size: 0.9em; margin: 0; display: block; }
+        .popup-section .content-text.focus { font-weight: 600; color: var(--title-color); }
+        .popup-section .content-text.location { color: #555; }
+        .popup-section .content-text.info { color: #333; }
+        .popup-section a { color: var(--link-color); text-decoration: none; font-size: 0.85em; display: inline-block; margin-top: 6px; font-weight: 600; }
+        .popup-section a:hover { text-decoration: underline; }
+        .leaflet-popup-tip-container { width: 20px; height: 10px; }
+        .leaflet-popup-tip { box-shadow: none; }
+        .leaflet-tooltip { border-radius: 4px; background-color: rgba(58, 90, 64, 0.9); color: #fff; border: none; box-shadow: 0 1px 4px rgba(0,0,0,0.2); padding: 6px 10px; font-size: 0.9em; font-weight: 500; }
+        .marker-cluster div { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.6); width: 32px; height: 32px; margin-left: 5px; margin-top: 5px; text-align: center; border-radius: 16px; font: 13px var(--font-family); font-weight: 600; line-height: 32px; }
+        .marker-cluster-small { background-color: rgba(163, 177, 138, 0.8); } .marker-cluster-small div { background-color: rgba(131, 197, 190, 0.9); }
+        .marker-cluster-medium { background-color: rgba(212, 163, 115, 0.8); } .marker-cluster-medium div { background-color: rgba(168, 129, 90, 0.9); }
+        .marker-cluster-large { background-color: rgba(88, 129, 87, 0.8); } .marker-cluster-large div { background-color: rgba(58, 90, 64, 0.9); }
+        .leaflet-control-custom { background-color: white; border: 1px solid var(--border-color); border-radius: 6px; width: 34px; height: 34px; text-align: center; line-height: 34px; cursor: pointer; font-weight: bold; font-size: 1.5em; color: #555; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .leaflet-control-custom:hover { background-color: #f4f4f4; color: #111; }
+        .marker-hover { transform: scale(1.15); z-index: 1000 !important; }
+        .leaflet-marker-icon { transition: transform 0.15s ease-out; }
+    </style>
+</head>
+<body>
+    <h1>US and Canada Landscape: Bio-Based Nanomaterials</h1>
+    <div class="disclaimer">
+        Disclaimer: Data is a snapshot. Landscape is dynamic. Developed by ronald.marquez@udg.edu / Powered by Gemini 2.5
+    </div>
+    <div id="map"></div>
+    <div class="legend">
+        <h4>Legend</h4>
+        <div><span style="background-color: #42a5f5;"></span> University</div>
+        <div><span style="background-color: #66bb6a;"></span> National Lab / Institute / RTO</div>
+        <div><span style="background-color: #ab47bc;"></span> Company</div>
+        <div><span style="background-color: #ffa726;"></span> Pilot Plant / Facility</div>
+        <div><span style="background-color: #ec407a;"></span> Network / Initiative / Consortium</div>
+        <div><span style="background-color: #8c96a0;"></span> Other / Unspecified</div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script>
+        // Initialize map centered on North America
+        const map = L.map('map', { center: [54, -96], zoom: 3, worldCopyJump: true });
+
+        // Base tile layers
+        const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OSM contributors', maxZoom: 18 });
+        const stamenTonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', { attribution: 'Stamen Toner Lite', subdomains: 'abcd', maxZoom: 20, ext: 'png' });
+        const cartoPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OSM contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 20 });
+        cartoPositron.addTo(map);
+
+        // Icon definitions
+        const iconSize = [32, 32], iconAnchor = [16, 32], popupAnchor = [0, -34];
+        const createIcon = (hexColor, text) => L.icon({ iconUrl: `https://placehold.co/${iconSize[0]}x${iconSize[1]}/${hexColor}/FFFFFF?text=${encodeURIComponent(text)}&font=lato`, iconSize: iconSize, iconAnchor: iconAnchor, popupAnchor: popupAnchor });
+        const icons = {
+            university: createIcon('42a5f5', 'UNI'),
+            institute: createIcon('66bb6a', 'LAB'), // Icon for Labs/Institutes/RTOs
+            company: createIcon('ab47bc', 'CO'),
+            pilot_plant: createIcon('ffa726', 'PILOT'),
+            network: createIcon('ec407a', 'NET'), // Icon for Networks/Initiatives
+            other: createIcon('8c96a0', '?')
+        };
+
+        // --- Comprehensive US Data Source (From previous turn) ---
+        const usEntitiesData = [
+             // Universities (Northeast)
+            { name: "University of Maine", type: "University", city: "Orono", state: "ME", country: "USA", lat: 44.89, lon: -68.67, focus: ["Cellulose (CNF, CNC, TOCN)", "Pilot Production"], keyInfo: "Hosts FBRI & PDC (1 ton/day CNF pilot plant). Leader in nanocellulose R&D. FPL Consortium member.", iconType: 'university' },
+            { name: "Massachusetts Institute of Technology (MIT)", type: "University", city: "Cambridge", state: "MA", country: "USA", lat: 42.36, lon: -71.09, focus: ["Lignin", "Cellulose", "Catalysis", "Polymers"], keyInfo: "ChemE (Román - lignin valorization, Rutledge - electrospinning). BOTTLE initiative.", iconType: 'university' },
+            { name: "Cornell University", type: "University", city: "Ithaca", state: "NY", country: "USA", lat: 42.45, lon: -76.47, focus: ["Cellulose (Bacterial)", "Biomass Conversion", "Nanofabrication"], keyInfo: "BEE (Gadikota - BNC from waste). Cornell Nanoscale Facility (CNF) user facility.", iconType: 'university' },
+            { name: "Penn State University", type: "University", city: "University Park", state: "PA", country: "USA", lat: 40.80, lon: -77.86, focus: ["Cellulose (CNC)", "Biomaterials", "Hydrogels"], keyInfo: "Materials Research Institute (MRI). ChemE (Sheikhi - LivGels). Drug delivery. FPL Consortium member.", iconType: 'university' },
+            { name: "University of Delaware", type: "University", city: "Newark", state: "DE", country: "USA", lat: 39.68, lon: -75.75, focus: ["Lignin", "Polymers", "Composites", "Plastics Upcycling"], keyInfo: "MSE/CBE. CRiSP, CPI, UD CHARM centers. Korley (lignin polymers), Epps (Lignolix tech).", iconType: 'university' },
+            { name: "Rensselaer Polytechnic Institute (RPI)", type: "University", city: "Troy", state: "NY", country: "USA", lat: 42.73, lon: -73.67, focus: ["Polymers", "Materials Science"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "Yale University", type: "University", city: "New Haven", state: "CT", country: "USA", lat: 41.31, lon: -72.92, focus: ["Engineering", "Materials"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            // Universities (Southeast)
+            { name: "North Carolina State University", type: "University", city: "Raleigh", state: "NC", country: "USA", lat: 35.78, lon: -78.68, focus: ["Cellulose", "Lignin", "Forest Biomaterials", "LNP Antimicrobials"], keyInfo: "Dept. Forest Biomaterials (Jameel, Lavoine, Lucia, Pal, Park, Pawlak, Venditti). ChemE (Velev). FPL Consortium member.", iconType: 'university' },
+            { name: "Georgia Institute of Technology", type: "University", city: "Atlanta", state: "GA", country: "USA", lat: 33.77, lon: -84.39, focus: ["Cellulose", "Chitin", "Packaging", "Composites", "Carbon Fibers"], keyInfo: "Renewable Bioproducts Institute (RBI). Shofner (Composites), Kumar (Carbon Fiber). FPL Consortium member.", iconType: 'university' },
+            { name: "Virginia Tech", type: "University", city: "Blacksburg", state: "VA", country: "USA", lat: 37.22, lon: -80.42, focus: ["Cellulose", "Packaging", "Polymers"], keyInfo: "Macromolecules Innovation Institute (MII). Dept. Sustainable Biomaterials (Kim, Huang). Packaging films.", iconType: 'university' },
+            { name: "Duke University", type: "University", city: "Durham", state: "NC", country: "USA", lat: 36.00, lon: -78.93, focus: ["Biomaterials", "Engineering"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "University of Tennessee", type: "University", city: "Knoxville", state: "TN", country: "USA", lat: 35.95, lon: -83.93, focus: ["Forest Products", "Materials"], keyInfo: "FPL Cellulose Nanotechnology Research Consortium member.", iconType: 'university' },
+            { name: "Clemson University", type: "University", city: "Clemson", state: "SC", country: "USA", lat: 34.68, lon: -82.83, focus: ["Materials Science", "Polymers"], keyInfo: "Relevant research; location of US Endowment for Forestry & Communities (P3Nano).", iconType: 'university' },
+             { name: "Mississippi State University", type: "University", city: "Starkville", state: "MS", country: "USA", lat: 33.45, lon: -88.79, focus: ["Forest Products", "Composites"], keyInfo: "FPL Cellulose Nanotechnology Research Consortium member.", iconType: 'university' },
+            // Universities (Midwest)
+            { name: "Purdue University", type: "University", city: "West Lafayette", state: "IN", country: "USA", lat: 40.42, lon: -86.92, focus: ["Cellulose (CNC, CNF)", "Cement Composites", "Nanotechnology"], keyInfo: "Birck Nanotechnology Center. Materials Eng. (Youngblood - cement). FPL Consortium member.", iconType: 'university' },
+            { name: "Ohio State University", type: "University", city: "Columbus", state: "OH", country: "USA", lat: 40.00, lon: -83.01, focus: ["Materials Science", "Chemical Engineering"], keyInfo: "Relevant research programs.", iconType: 'university' },
+            { name: "Northwestern University", type: "University", city: "Evanston", state: "IL", country: "USA", lat: 42.05, lon: -87.67, focus: ["Materials Science", "Nanotechnology"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "Carnegie Mellon University", type: "University", city: "Pittsburgh", state: "PA", country: "USA", lat: 40.44, lon: -79.94, focus: ["Materials Science", "Chemical Engineering"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "University of Nebraska–Lincoln", type: "University", city: "Lincoln", state: "NE", country: "USA", lat: 40.82, lon: -96.70, focus: ["Lignin", "Materials", "Nanoscience"], keyInfo: "Nebraska Center for Materials & Nanoscience (NCMN).", iconType: 'university' },
+            { name: "University of Minnesota", type: "University", city: "Minneapolis", state: "MN", country: "USA", lat: 44.97, lon: -93.23, focus: ["Polymers", "Sustainability"], keyInfo: "Hosts NSF Center for Sustainable Polymers (CSP).", iconType: 'university' },
+            { name: "University of Wisconsin-Madison", type: "University", city: "Madison", state: "WI", country: "USA", lat: 43.07, lon: -89.41, focus: ["Nanotechnology EHS", "Sustainability"], keyInfo: "Hosts NSF Center for Sustainable Nanotechnology (CSN). Close ties to FPL.", iconType: 'university' },
+            { name: "Iowa State University", type: "University", city: "Ames", state: "IA", country: "USA", lat: 42.02, lon: -93.64, focus: ["Materials Science", "Engineering"], keyInfo: "Strong engineering programs. Ames Lab affiliation.", iconType: 'university' },
+            { name: "University of Notre Dame", type: "University", city: "South Bend", state: "IN", country: "USA", lat: 41.70, lon: -86.23, focus: ["Chemical Synthesis", "Polymers"], keyInfo: "Hosts NSF Center for Computer-Assisted Synthesis (C-CAS).", iconType: 'university' },
+            // Universities (West Coast)
+            { name: "Oregon State University", type: "University", city: "Corvallis", state: "OR", country: "USA", lat: 44.56, lon: -123.28, focus: ["Cellulose", "Lignin", "Nanocomposites", "Wood Science"], keyInfo: "Dept. Wood Science & Eng. (WSE), Oregon Wood Innovation Center (OWIC). FPL Consortium member.", iconType: 'university' },
+            { name: "Stanford University", type: "University", city: "Stanford", state: "CA", country: "USA", lat: 37.42, lon: -122.17, focus: ["Cellulose", "Lignin", "Energy Storage", "Catalysis"], keyInfo: "MSE/ChemE (Cui, Kanan, Dauskardt, Bent). Nanomaterials for energy/environment.", iconType: 'university' },
+            { name: "University of California, Berkeley", type: "University", city: "Berkeley", state: "CA", country: "USA", lat: 37.87, lon: -122.25, focus: ["Lignin", "Chitin (bio-inspired)", "Biomass Engineering"], keyInfo: "BioE (Lee - bio-inspired assembly). JBEI affiliation (lignin modification). Hosts NSF C-GEM.", iconType: 'university' },
+            { name: "University of Washington", type: "University", city: "Seattle", state: "WA", country: "USA", lat: 47.65, lon: -122.30, focus: ["Cellulose", "Lignin", "Biodegradable Materials"], keyInfo: "MSE (Cao), SEFS (BSE Program). Bio-based sensors. PNNL/WSU collaboration.", iconType: 'university' },
+            { name: "Washington State University", type: "University", city: "Pullman", state: "WA", country: "USA", lat: 46.73, lon: -117.16, focus: ["Lignin", "Bioproducts"], keyInfo: "WSU-PNNL Bioproducts Institute. Lignin extraction/degradation research.", iconType: 'university' },
+            { name: "University of California, Davis", type: "University", city: "Davis", state: "CA", country: "USA", lat: 38.53, lon: -121.76, focus: ["Agriculture", "Biotechnology", "Materials"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "University of Texas at Austin", type: "University", city: "Austin", state: "TX", country: "USA", lat: 30.28, lon: -97.73, focus: ["Materials", "Engineering", "Nanotechnology"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+             { name: "University of Texas at El Paso", type: "University", city: "El Paso", state: "TX", country: "USA", lat: 31.77, lon: -106.50, focus: ["Materials", "Engineering", "Nanotechnology"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+            { name: "Arizona State University", type: "University", city: "Tempe", state: "AZ", country: "USA", lat: 33.42, lon: -111.93, focus: ["Sustainability", "Materials", "Engineering"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+             { name: "Rice University", type: "University", city: "Houston", state: "TX", country: "USA", lat: 29.71, lon: -95.40, focus: ["

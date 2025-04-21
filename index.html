@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>US and Canada Landscape: Bio-Based Nanomaterials</title>
+    <title>North American Landscape: Bio-Based Nanomaterials</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
@@ -64,9 +64,9 @@
     </style>
 </head>
 <body>
-    <h1>US and Canada Landscape: Bio-Based Nanomaterials</h1>
+    <h1>North American Landscape: Bio-Based Nanomaterials</h1>
     <div class="disclaimer">
-        Disclaimer: Data is a snapshot. Landscape is dynamic. Developed by ronald.marquez@udg.edu / Powered by Gemini 2.5
+        Disclaimer: Map data extracted from US & Canadian reports. Locations approximate. Requires independent verification.
     </div>
     <div id="map"></div>
     <div class="legend">
@@ -141,4 +141,221 @@
             { name: "University of Texas at Austin", type: "University", city: "Austin", state: "TX", country: "USA", lat: 30.28, lon: -97.73, focus: ["Materials", "Engineering", "Nanotechnology"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
              { name: "University of Texas at El Paso", type: "University", city: "El Paso", state: "TX", country: "USA", lat: 31.77, lon: -106.50, focus: ["Materials", "Engineering", "Nanotechnology"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
             { name: "Arizona State University", type: "University", city: "Tempe", state: "AZ", country: "USA", lat: 33.42, lon: -111.93, focus: ["Sustainability", "Materials", "Engineering"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
-             { name: "Rice University", type: "University", city: "Houston", state: "TX", country: "USA", lat: 29.71, lon: -95.40, focus: ["
+             { name: "Rice University", type: "University", city: "Houston", state: "TX", country: "USA", lat: 29.71, lon: -95.40, focus: ["Nanotechnology", "Materials"], keyInfo: "Mentioned as hosting NNI centers/relevant research.", iconType: 'university' },
+             { name: "Texas A&M University", type: "University", city: "College Station", state: "TX", country: "USA", lat: 30.61, lon: -96.34, focus: ["Materials", "Chemistry", "Mechanochemistry"], keyInfo: "Hosts NSF Center for the Mechanical Control of Chemistry (CMCC).", iconType: 'university' },
+            // National Labs / Institutes (US)
+            { name: "USDA Forest Products Laboratory (FPL)", type: "Institute", city: "Madison", state: "WI", country: "USA", lat: 43.08, lon: -89.42, focus: ["Cellulose (CNC, CNF)", "Lignin", "Pilot Production"], keyInfo: "National lab for wood utilization. CNC (25kg/batch) & CNF (5kg/batch) pilot plants. P3Nano partner.", iconType: 'institute' },
+            { name: "Oak Ridge National Laboratory (ORNL)", type: "Institute", city: "Oak Ridge", state: "TN", country: "USA", lat: 36.01, lon: -84.26, focus: ["Cellulose", "Lignin", "Composites", "Nanomaterials Characterization"], keyInfo: "DOE Lab. Center for Nanophase Materials Sciences (CNMS) user facility.", iconType: 'institute' },
+            { name: "Lawrence Berkeley National Laboratory (LBNL)", type: "Institute", city: "Berkeley", state: "CA", country: "USA", lat: 37.87, lon: -122.24, focus: ["Lignin", "Cellulose", "Biomass Deconstruction"], keyInfo: "DOE Lab. Hosts Joint BioEnergy Institute (JBEI).", iconType: 'institute' },
+            { name: "National Renewable Energy Laboratory (NREL)", type: "Institute", city: "Golden", state: "CO", country: "USA", lat: 39.74, lon: -105.17, focus: ["Lignin", "Cellulose", "Biorefining"], keyInfo: "DOE Lab. Lignin-first biorefining (Beckham). BOTTLE Consortium.", iconType: 'institute' },
+            { name: "Pacific Northwest National Laboratory (PNNL)", type: "Institute", city: "Richland", state: "WA", country: "USA", lat: 46.35, lon: -119.27, focus: ["Lignin", "Catalysis"], keyInfo: "DOE Lab. WSU-PNNL Bioproducts Institute. Lignin extraction/degradation.", iconType: 'institute' },
+            { name: "Ames National Laboratory", type: "Institute", city: "Ames", state: "IA", country: "USA", lat: 42.02, lon: -93.65, focus: ["Materials Science", "Chemistry"], keyInfo: "DOE Lab located at Iowa State University.", iconType: 'institute' },
+            { name: "Argonne National Laboratory", type: "Institute", city: "Lemont", state: "IL", country: "USA", lat: 41.71, lon: -87.98, focus: ["Materials Science", "Energy Storage", "Characterization"], keyInfo: "DOE Lab. Advanced Photon Source.", iconType: 'institute' },
+            { name: "Sandia National Laboratories", type: "Institute", city: "Albuquerque", state: "NM", country: "USA", lat: 35.05, lon: -106.54, focus: ["Materials Science", "Nanotechnology", "Engineering"], keyInfo: "DOE/NNSA Lab. Main site in NM.", iconType: 'institute' },
+            { name: "Los Alamos National Laboratory (LANL)", type: "Institute", city: "Los Alamos", state: "NM", country: "USA", lat: 35.87, lon: -106.32, focus: ["Materials Science", "Bioscience", "Engineering"], keyInfo: "DOE/NNSA Lab.", iconType: 'institute' },
+            { name: "SLAC National Accelerator Laboratory", type: "Institute", city: "Menlo Park", state: "CA", country: "USA", lat: 37.41, lon: -122.20, focus: ["Materials Characterization", "X-ray Science"], keyInfo: "DOE Lab operated by Stanford. Advanced light sources.", iconType: 'institute' },
+            { name: "NIST Center for Nanoscale Science and Technology (CNST)", type: "Institute", city: "Gaithersburg", state: "MD", country: "USA", lat: 39.13, lon: -77.21, focus: ["Nanofabrication", "Metrology"], keyInfo: "NIST user facility for nanoscale measurement and fabrication.", iconType: 'institute' },
+            // NSF Centers (classified as Institute type for mapping)
+            { name: "NSF Center for Sustainable Polymers (CSP)", type: "Institute", city: "Minneapolis", state: "MN", country: "USA", lat: 44.97, lon: -93.23, focus: ["Sustainable Polymers", "Biobased Polymers"], keyInfo: "NSF CCI hosted at UMN.", iconType: 'institute' },
+            { name: "NSF Center for Sustainable Nanotechnology (CSN)", type: "Institute", city: "Madison", state: "WI", country: "USA", lat: 43.07, lon: -89.41, focus: ["Nanotechnology EHS", "Nano-Bio Interactions"], keyInfo: "NSF CCI hosted at UW-Madison.", iconType: 'institute' },
+            { name: "NSF Center for Genetically Encoded Materials (C-GEM)", type: "Institute", city: "Berkeley", state: "CA", country: "USA", lat: 37.87, lon: -122.25, focus: ["Bio-inspired Polymers", "Synthetic Biology"], keyInfo: "NSF CCI hosted at UC Berkeley.", iconType: 'institute' },
+            { name: "DOE Center for Plastics Innovation (CPI)", type: "Institute", city: "Newark", state: "DE", country: "USA", lat: 39.68, lon: -75.75, focus: ["Plastics Upcycling", "Sustainable Polymers"], keyInfo: "DOE EFRC hosted at UDelaware.", iconType: 'institute' },
+            { name: "NSF UD Center for Hybrid, Active, and Responsive Materials (UD CHARM)", type: "Institute", city: "Newark", state: "DE", country: "USA", lat: 39.68, lon: -75.75, focus: ["Soft Matter", "Polymers", "Responsive Materials"], keyInfo: "NSF MRSEC hosted at UDelaware.", iconType: 'institute' },
+            { name: "NSF Center for Computer-Assisted Synthesis (C-CAS)", type: "Institute", city: "South Bend", state: "IN", country: "USA", lat: 41.70, lon: -86.23, focus: ["Chemical Synthesis"], keyInfo: "NSF CCI hosted at Notre Dame.", iconType: 'institute' },
+            { name: "NSF Center for the Mechanical Control of Chemistry (CMCC)", type: "Institute", city: "College Station", state: "TX", country: "USA", lat: 30.61, lon: -96.34, focus: ["Mechanochemistry", "Materials"], keyInfo: "NSF CCI hosted at Texas A&M.", iconType: 'institute' },
+            { name: "WSU-PNNL Bioproducts Institute", type: "Institute", city: "Richland", state: "WA", country: "USA", lat: 46.35, lon: -119.27, focus: ["Lignin", "Bioproducts", "Biomass Conversion"], keyInfo: "Joint institute between WSU and PNNL.", iconType: 'institute' },
+            { name: "Cornell Nanoscale Facility (CNF)", type: "Institute", city: "Ithaca", state: "NY", country: "USA", lat: 42.45, lon: -76.47, focus: ["Nanofabrication"], keyInfo: "National user facility at Cornell.", iconType: 'institute' },
+            // Companies (US)
+            { name: "Ingevity", type: "Company", city: "North Charleston", state: "SC", country: "USA", lat: 32.89, lon: -80.02, focus: ["Lignin", "Specialty Chemicals"], keyInfo: "Major producer of kraft lignin products (Reax®, Indulin®).", iconType: 'company' },
+            { name: "Domtar (Paper Excellence)", type: "Company", city: "Fort Mill", state: "SC", country: "USA", lat: 35.01, lon: -80.94, focus: ["Lignin", "Pulp & Paper"], keyInfo: "Produces BioChoice™ lignin (Plymouth, NC plant). Partnered with Prisma.", iconType: 'company' },
+            { name: "Sappi North America", type: "Company", city: "Boston", state: "MA", country: "USA", lat: 42.36, lon: -71.06, focus: ["Cellulose (CNF - Valida®)", "Lignin", "Pulp & Paper"], keyInfo: "NA HQ. Westbrook ME Tech Center. Markets Valida® CNF & lignin products.", iconType: 'company' },
+            { name: "Stora Enso (US Presence)", type: "Company", city: "Raceland", state: "LA", country: "USA", lat: 29.72, lon: -90.60, focus: ["Lignin", "Bagasse Conversion"], keyInfo: "Operates B2X plant converting bagasse to xylose. Markets NeoLigno®, Lignode®.", iconType: 'company' },
+            { name: "FiberLean Technologies (US Sites)", type: "Company", city: "Various (US)", state: "USA", country: "USA", lat: 39.8, lon: -98.5, focus: ["Cellulose (MFC)"], keyInfo: "Operates satellite MFC plants at customer sites in US. Part of Werhahn KG.", iconType: 'company' },
+            { name: "Borregaard USA", type: "Company", city: "Rothschild", state: "WI", country: "USA", lat: 44.88, lon: -89.62, focus: ["Lignin", "Cellulose (MFC - Exilva®)"], keyInfo: "US Sales/Service for Norwegian parent. Supplies Lignin & Exilva® MFC.", iconType: 'company' },
+            { name: "International Paper", type: "Company", city: "Memphis", state: "TN", country: "USA", lat: 35.14, lon: -90.05, focus: ["Pulp", "Paper", "Packaging"], keyInfo: "Global leader. Potential user/producer of advanced fiber tech.", iconType: 'company' },
+            { name: "Smurfit Westrock", type: "Company", city: "Atlanta", state: "GA", country: "USA", lat: 33.74, lon: -84.38, focus: ["Pulp", "Paper", "Packaging"], keyInfo: "Global leader (merged). Potential user/producer of advanced fiber tech.", iconType: 'company' },
+            { name: "Cortec Corporation", type: "Company", city: "St. Paul", state: "MN", country: "USA", lat: 44.95, lon: -93.09, focus: ["Corrosion Inhibitors", "Bio-based Nanotechnology"], keyInfo: "Markets USDA Biobased products with 'Nano VpCI'.", iconType: 'company' },
+            { name: "GranBio Technologies", type: "Company", city: "Thomaston", state: "GA", country: "USA", lat: 32.98, lon: -84.32, focus: ["Cellulose (Nanocellulose - NDC)", "Biorefining"], keyInfo: "Building large-scale (6.6kT/yr) plant using API AVAP® tech. DOE funded.", iconType: 'company' },
+            { name: "Lignolix", type: "Company", city: "Newark", state: "DE", country: "USA", lat: 39.68, lon: -75.75, focus: ["Lignin Valorization", "Specialty Chemicals"], keyInfo: "UDelaware spin-out. Novel lignin breakdown process. Grant funded.", iconType: 'company' },
+            { name: "NutJobs", type: "Company", city: "Unknown", state: "USA", country: "USA", lat: 39.8, lon: -98.5, focus: ["Bioplastics from Nutshells"], keyInfo: "Startup targeting packaging. Location unknown.", iconType: 'company' },
+            { name: "US Research Nanomaterials, Inc.", type: "Company", city: "Houston", state: "TX", country: "USA", lat: 29.76, lon: -95.36, focus: ["Nanomaterials Supply"], keyInfo: "Supplier of various nanomaterials including nanofibers.", iconType: 'company' },
+            { name: "American Elements", type: "Company", city: "Los Angeles", state: "CA", country: "USA", lat: 34.05, lon: -118.24, focus: ["Advanced Materials Supply"], keyInfo: "Supplier including nanofibers.", iconType: 'company' },
+            { name: "Alfa Chemistry", type: "Company", city: "Shirley", state: "NY", country: "USA", lat: 40.85, lon: -72.86, focus: ["Chemicals", "Nanomaterials Supply"], keyInfo: "Supplier including graphene, nanofibers.", iconType: 'company' },
+            { name: "Lifeasible / Matexcel", type: "Company", city: "Shirley", state: "NY", country: "USA", lat: 40.85, lon: -72.86, focus: ["Biotech Services", "Nanoparticles"], keyInfo: "Service provider, offers nanoparticles.", iconType: 'company' },
+            { name: "Zylo Therapeutics", type: "Company", city: "Greenville", state: "SC", country: "USA", lat: 34.85, lon: -82.39, focus: ["Drug Delivery", "Nanoparticles"], keyInfo: "Develops nanoparticle-based drug delivery (Silica-based).", iconType: 'company' },
+            { name: "Keystone Nano", type: "Company", city: "State College", state: "PA", country: "USA", lat: 40.79, lon: -77.86, focus: ["Drug Delivery", "Nanoparticles"], keyInfo: "Develops nano-based therapeutics.", iconType: 'company' },
+            { name: "ECOR Global", type: "Company", city: "San Diego", state: "CA", country: "USA", lat: 32.71, lon: -117.16, focus: ["Bio-based Composites", "Cellulose Fiber"], keyInfo: "Makes composite panels from cellulose fiber. Partnered with Stora Enso.", iconType: 'company' },
+            { name: "SLB (Schlumberger)", type: "Company", city: "Houston", state: "TX", country: "USA", lat: 29.76, lon: -95.36, focus: ["Oil & Gas Services"], keyInfo: "Shareholder in CelluForce. Potential user of CNCs.", iconType: 'company' },
+            { name: "Carbonwave", type: "Company", city: "Boston", state: "MA", country: "USA", lat: 42.36, lon: -71.06, focus: ["Biomaterials from Seaweed"], keyInfo: "Converts sargassum to cosmetic emulsifiers (SeaBalance), agri products.", iconType: 'company' },
+            { name: "Pearl Bio", type: "Company", city: "Unknown", state: "USA", country: "USA", lat: 39.8, lon: -98.5, focus: ["Synthetic Biology", "Biomaterials"], keyInfo: "Developing materials for enhanced biologic therapies. Location unknown.", iconType: 'company' },
+            { name: "Eori BioLeather", type: "Company", city: "Unknown", state: "USA", country: "USA", lat: 39.8, lon: -98.5, focus: ["Vegan Leather", "Cellulose"], keyInfo: "Developing leather alternative from wood/textile waste cellulose. Location unknown.", iconType: 'company' },
+            { name: "Soarce", type: "Company", city: "Orlando", state: "FL", country: "USA", lat: 28.53, lon: -81.37, focus: ["Bio-based Fabric", "Seaweed", "Nanoceramics"], keyInfo: "Developed SEARAMIC fabric/additive.", iconType: 'company' },
+            { name: "Cancrie", type: "Company", city: "Indianapolis", state: "IN", country: "USA", lat: 39.76, lon: -86.15, focus: ["Bio-based Carbon", "Batteries"], keyInfo: "Developing Cancrie Carbon nanocarbon from agri waste for batteries.", iconType: 'company' },
+            { name: "Ceres Nanosciences", type: "Company", city: "Manassas", state: "VA", country: "USA", lat: 38.75, lon: -77.47, focus: ["Nanoparticles", "Diagnostics"], keyInfo: "Develops Nanotrap® particles for analyte capture.", iconType: 'company' },
+            { name: "Multiscale Systems", type: "Company", city: "Worcester", state: "MA", country: "USA", lat: 42.26, lon: -71.80, focus: ["Metamaterials", "Composites"], keyInfo: "Develops advanced materials, potentially using bio-based components.", iconType: 'company' },
+            { name: "TeraPore", type: "Company", city: "South San Francisco", state: "CA", country: "USA", lat: 37.65, lon: -122.40, focus: ["Nanofiltration Membranes"], keyInfo: "Develops high-permeability membranes.", iconType: 'company' },
+            { name: "INanoBio", type: "Company", city: "Menlo Park", state: "CA", country: "USA", lat: 37.45, lon: -122.18, focus: ["Biosensors", "Nanotechnology"], keyInfo: "Develops nano-based biosensors.", iconType: 'company' },
+            // Pilot Plants (US - Distinct Entries)
+            { name: "UMaine Process Development Center (PDC)", type: "Pilot Plant", city: "Orono", state: "ME", country: "USA", lat: 44.89, lon: -68.67, focus: ["Cellulose (CNF, CNC, TOCN)"], keyInfo: "1 ton/day CNF capacity. Publicly accessible.", iconType: 'pilot_plant' },
+            { name: "FPL Nanocellulose Pilot Plant", type: "Pilot Plant", city: "Madison", state: "WI", country: "USA", lat: 43.08, lon: -89.42, focus: ["Cellulose (CNC, CNF)"], keyInfo: "CNC (25kg/batch) & CNF (5kg/batch) capacity. At USDA FPL.", iconType: 'pilot_plant' },
+            { name: "Georgia Tech Carbon Fiber Pilot Line", type: "Pilot Plant", city: "Atlanta", state: "GA", country: "USA", lat: 33.77, lon: -84.39, focus: ["Carbon Fiber from Lignin/Cellulose"], keyInfo: "Pilot facility for investigating bio-based carbon fiber precursors.", iconType: 'pilot_plant' },
+            { name: "Paperlogic Demo Plant (Historical)", type: "Pilot Plant", city: "Turners Falls", state: "MA", country: "USA", lat: 42.60, lon: -72.55, focus: ["Cellulose (CNF)"], keyInfo: "Reported 2000 kg/day CNF demo plant in 2015. Status unclear.", iconType: 'pilot_plant' },
+            // Networks / Initiatives (US)
+            { name: "P3Nano", type: "Network", city: "Greenville", state: "SC", country: "USA", lat: 34.85, lon: -82.39, focus: ["Nanocellulose Commercialization"], keyInfo: "Public-private partnership (USDA FS/FPL & US Endowment). Funds R&D.", iconType: 'network' },
+            { name: "BioMADE", type: "Network", city: "St. Paul", state: "MN", country: "USA", lat: 44.97, lon: -93.10, focus: ["Bioindustrial Manufacturing"], keyInfo: "Manufacturing USA Institute (DoD). Funds scale-up projects.", iconType: 'network' },
+            { name: "RAPID Institute", type: "Network", city: "New York", state: "NY", country: "USA", lat: 40.71, lon: -74.00, focus: ["Process Intensification"], keyInfo: "Manufacturing USA Institute (DOE).", iconType: 'network' },
+            { name: "REMADE Institute", type: "Network", city: "Rochester", state: "NY", country: "USA", lat: 43.15, lon: -77.61, focus: ["Circular Economy", "Recycling"], keyInfo: "Manufacturing USA Institute (DOE).", iconType: 'network' },
+            { name: "AIM Photonics", type: "Network", city: "Albany", state: "NY", country: "USA", lat: 42.65, lon: -73.75, focus: ["Integrated Photonics"], keyInfo: "Manufacturing USA Institute (DoD).", iconType: 'network' },
+            { name: "NIIMBL", type: "Network", city: "Newark", state: "DE", country: "USA", lat: 39.68, lon: -75.75, focus: ["Biopharmaceutical Manufacturing"], keyInfo: "Manufacturing USA Institute (NIST).", iconType: 'network' },
+            { name: "National Nanotechnology Initiative (NNI)", type: "Network", city: "Arlington", state: "VA", country: "USA", lat: 38.85, lon: -77.10, focus: ["Nanotechnology Coordination"], keyInfo: "Coordinates federal nano R&D across agencies (NSTC/NSET).", iconType: 'network' },
+            { name: "USDA BioPreferred Program", type: "Network", city: "Washington", state: "DC", country: "USA", lat: 38.89, lon: -77.03, focus: ["Biobased Product Promotion"], keyInfo: "USDA program creating market pull via labeling/procurement.", iconType: 'network' },
+            { name: "FPL Cellulose Nanotechnology Research Consortium", type: "Network", city: "Madison", state: "WI", country: "USA", lat: 43.08, lon: -89.42, focus: ["Cellulose Nanomaterials R&D"], keyInfo: "FPL-led consortium including UMaine, GT, NCSU, OSU, PSU, Purdue, UTenn, MissState.", iconType: 'network' },
+            { name: "Alliance for Pulp and Paper Technology Innovation (APPTI)", type: "Network", city: "Unknown", state: "USA", country: "USA", lat: 39.8, lon: -98.5, focus: ["Pulp & Paper Industry R&D"], keyInfo: "Industry consortium (formerly Agenda 2020). Collaborates with FPL/GT.", iconType: 'network' },
+        ];
+
+        // --- Comprehensive Canadian Data Source (Extracted from Canadian Report) ---
+        const caEntitiesData = [
+            // Universities (Canada)
+            { name: "University of British Columbia (BPI)", type: "University", city: "Vancouver", province: "BC", country: "Canada", lat: 49.26, lon: -123.25, focus: ["Cellulose (CNC, CNF)", "Lignin (LNP)", "Chitin"], keyInfo: "BioProducts Institute. World-leading research hub (Rojas, Cranston, Mansfield).", iconType: 'university' },
+            { name: "University of Toronto", type: "University", city: "Toronto", province: "ON", country: "Canada", lat: 43.66, lon: -79.39, focus: ["Cellulose (LCNF)", "Lignin", "Chitosan"], keyInfo: "Chem Eng/Forestry (Yan), BioZone (Master, Allen). Bioproducts, adhesives.", iconType: 'university' },
+            { name: "McMaster University", type: "University", city: "Hamilton", province: "ON", country: "Canada", lat: 43.26, lon: -79.92, focus: ["Cellulose (CNC)", "Lignocellulose", "Bioplastics"], keyInfo: "Chem Eng (Thompson), Biointerfaces Institute.", iconType: 'university' },
+            { name: "University of Alberta", type: "University", city: "Edmonton", province: "AB", country: "Canada", lat: 53.52, lon: -113.52, focus: ["Cellulose (CNC)", "Lignin"], keyInfo: "Collaborates with NRC-NINT and InnoTech Alberta.", iconType: 'university' },
+            { name: "Université Laval", type: "University", city: "Quebec City", province: "QC", country: "Canada", lat: 46.79, lon: -71.28, focus: ["Cellulose", "Lignin", "Organosolv"], keyInfo: "Wood Sci (Stevanovic), Chem Eng (Rodrigue). CRMR. Composites.", iconType: 'university' },
+            { name: "Polytechnique Montréal", type: "University", city: "Montreal", province: "QC", country: "Canada", lat: 45.50, lon: -73.61, focus: ["Cellulose (CNC)"], keyInfo: "Chem Eng. CNC dispersion, rheology.", iconType: 'university' },
+            { name: "Université de Sherbrooke", type: "University", city: "Sherbrooke", province: "QC", country: "Canada", lat: 45.38, lon: -71.92, focus: ["Cellulose", "Lignin", "Biomass Processing"], keyInfo: "Chem Eng & Biotech Eng. Biomass Technology Lab.", iconType: 'university' },
+            { name: "University of Ottawa", type: "University", city: "Ottawa", province: "ON", country: "Canada", lat: 45.42, lon: -75.68, focus: ["Bio-nanomaterials", "Biomedical"], keyInfo: "Bio-nanomaterials Chemistry and Engineering Lab (Heart Institute).", iconType: 'university' },
+            { name: "University of Waterloo", type: "University", city: "Waterloo", province: "ON", country: "Canada", lat: 43.47, lon: -80.54, focus: ["Nanotechnology", "Energy Materials", "Sensors"], keyInfo: "Waterloo Institute for Nanotechnology (WIN).", iconType: 'university' },
+
+            // Government Labs / Institutes (Canada)
+            { name: "National Research Council Canada (NRC) - QNRC", type: "Institute", city: "Ottawa", province: "ON", country: "Canada", lat: 45.38, lon: -75.71, focus: ["Nanomaterials", "Bio-nanofibres", "Composites"], keyInfo: "Quantum and Nanotechnologies Research Centre (also Edmonton). Synthesis, characterization.", iconType: 'institute' },
+            { name: "National Research Council Canada (NRC) - ACRD", type: "Institute", city: "Montreal", province: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["Agri/Marine Biomass", "Bioprocessing"], keyInfo: "Aquatic and Crop Resource Development (also PEI, NS). Feedstock valorization.", iconType: 'institute' },
+             { name: "National Research Council Canada (NRC) - NINT", type: "Institute", city: "Edmonton", province: "AB", country: "Canada", lat: 53.52, lon: -113.52, focus: ["Nanotechnology"], keyInfo: "National Institute for Nanotechnology (co-located with UAlberta).", iconType: 'institute' },
+            { name: "Natural Resources Canada (NRCan) - CFS", type: "Institute", city: "Ottawa", province: "ON", country: "Canada", lat: 45.42, lon: -75.69, focus: ["Forestry", "Wood Nanomaterials", "Standards"], keyInfo: "Canadian Forest Service HQ. Supports forest sector innovation.", iconType: 'institute' },
+            { name: "FPInnovations", type: "Institute", city: "Pointe-Claire", province: "QC", country: "Canada", lat: 45.44, lon: -73.82, focus: ["Cellulose (CNC, CF)", "Lignin", "Biorefining"], keyInfo: "Public-private forest sector R&D. Developed CNC/CF tech. Pilot facilities. HQ location.", iconType: 'institute' },
+            { name: "InnoTech Alberta", type: "Institute", city: "Edmonton", province: "AB", country: "Canada", lat: 53.52, lon: -113.62, focus: ["Cellulose (CNC)", "Lignin"], keyInfo: "Provincial RTO. Operates CNC pilot plant (agri/wood residues). Safety assessment.", iconType: 'institute' },
+
+            // Companies (Canada)
+            { name: "Kruger Inc. (Kruger Biomaterials)", type: "Company", city: "Montreal", province: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["Cellulose (CF - FiloCell™)"], keyInfo: "Parent company HQ. Plant in Trois-Rivières.", iconType: 'company' },
+            { name: "Domtar Corporation (Historical)", type: "Company", city: "Montreal", province: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["CNC (Pilot Host)"], keyInfo: "Historical HQ/Partner in CelluForce pilot. Now part of Paper Excellence.", iconType: 'company' },
+            { name: "Resolute Forest Products (Historical)", type: "Company", city: "Montreal", province: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["Lignin", "Sugars"], keyInfo: "Historical HQ/Partner in TMP-Bio pilot. Now part of Paper Excellence.", iconType: 'company' },
+            { name: "West Fraser Timber Co. Ltd.", type: "Company", city: "Vancouver", province: "BC", country: "Canada", lat: 49.28, lon: -123.12, focus: ["Lignin Recovery"], keyInfo: "Implemented LignoForce™ pilot at Hinton, AB mill.", iconType: 'company' },
+            { name: "Igloo Cellulose Inc.", type: "Company", city: "Montreal area", province: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["Cellulose Insulation"], keyInfo: "Manufacturer of bulk cellulose insulation.", iconType: 'company' },
+            { name: "CelluForce Inc.", type: "Company", city: "Montreal", state: "QC", country: "Canada", lat: 45.50, lon: -73.56, focus: ["Cellulose (CNC)"], keyInfo: "World's largest CNC producer (300T/yr plant in Windsor, QC).", iconType: 'company' },
+            { name: "Neptune Nanotechnologies Inc.", type: "Company", city: "Markham", province: "ON", country: "Canada", lat: 43.88, lon: -79.26, focus: ["Chitin Nanocrystals"], keyInfo: "Startup producing ChNCs from fishery waste. Pilot scale dev.", iconType: 'company' },
+            { name: "Cellulotech Inc.", type: "Company", city: "Victoria", province: "BC", country: "Canada", lat: 48.42, lon: -123.36, focus: ["Cellulose Modification"], keyInfo: "Startup with hydrophobic grafting tech for paper/cellulosics.", iconType: 'company' },
+            { name: "Anomera Inc.", type: "Company", city: "Toronto (approx.)", province: "ON", country: "Canada", lat: 43.65, lon: -79.38, focus: ["Cellulose (Carboxylated CNC)"], keyInfo: "Reported pilot production (30 kg/day). Location approx.", iconType: 'company' },
+            { name: "Blue Goose Biorefineries Inc.", type: "Company", city: "Toronto (approx.)", province: "ON", country: "Canada", lat: 43.65, lon: -79.38, focus: ["Cellulose (Carboxylated CNC)"], keyInfo: "Reported pilot production (10 kg/day). Location approx.", iconType: 'company' },
+            { name: "Paper Excellence", type: "Company", city: "Richmond", province: "BC", country: "Canada", lat: 49.17, lon: -123.13, focus: ["Pulp & Paper"], keyInfo: "Parent company of Domtar and Resolute Forest Products.", iconType: 'company' },
+            { name: "Cellulose Lab", type: "Company", city: "Fredericton", state: "NB", country: "Canada", lat: 45.96, lon: -66.64, focus: ["Cellulose (CNC, CNF, BC) Supply"], keyInfo: "Supplier of research-grade nanocellulose. Supplies US.", iconType: 'company' }, // Copied from US list as relevant supplier
+
+            // Pilot Plants (Canada - Distinct Entries)
+            { name: "Kruger Biomaterials CF Plant", type: "Pilot Plant", city: "Trois-Rivières", province: "QC", country: "Canada", lat: 46.35, lon: -72.55, focus: ["Cellulose (CF - FiloCell™)"], keyInfo: "World's largest CF plant (6kT/yr). Commercial scale.", iconType: 'pilot_plant' }, // Classify large plant as Pilot for map icon consistency
+            { name: "CelluForce CNC Plant", type: "Pilot Plant", city: "Windsor", province: "QC", country: "Canada", lat: 45.57, lon: -72.07, focus: ["Cellulose (CNC)"], keyInfo: "World's largest CNC plant (300T/yr). Commercial scale.", iconType: 'pilot_plant' }, // Classify large plant as Pilot for map icon consistency
+            { name: "InnoTech Alberta CNC Pilot Plant", type: "Pilot Plant", city: "Edmonton", province: "AB", country: "Canada", lat: 53.52, lon: -113.62, focus: ["Cellulose (CNC)"], keyInfo: "100 kg/week capacity from agri/wood residues.", iconType: 'pilot_plant' },
+            { name: "West Fraser LignoForce™ Pilot", type: "Pilot Plant", city: "Hinton", province: "AB", country: "Canada", lat: 53.40, lon: -117.58, focus: ["Lignin Recovery"], keyInfo: "Pilot implementation of LignoForce™ system.", iconType: 'pilot_plant' },
+            { name: "Resolute TMP-Bio Pilot Plant (Historical)", type: "Pilot Plant", city: "Thunder Bay", province: "ON", country: "Canada", lat: 48.38, lon: -89.24, focus: ["Lignin", "Sugars"], keyInfo: "Pilot plant for TMP biorefining. Status unclear.", iconType: 'pilot_plant' },
+
+            // Networks / Initiatives (Canada)
+            { name: "Genome Canada", type: "Network", city: "Ottawa", province: "ON", country: "Canada", lat: 45.42, lon: -75.69, focus: ["Genomics", "Bioeconomy"], keyInfo: "Funds large-scale genomics projects relevant to bioproducts.", iconType: 'network' },
+            { name: "Forest Bioeconomy Framework (Coordination)", type: "Network", city: "Ottawa", province: "ON", country: "Canada", lat: 45.42, lon: -75.69, focus: ["Bioeconomy Strategy"], keyInfo: "National framework coordinated via CCFM.", iconType: 'network' },
+            { name: "CSA Group", type: "Network", city: "Toronto", province: "ON", country: "Canada", lat: 43.78, lon: -79.41, focus: ["Standards Development"], keyInfo: "Developed Canadian standards for cellulose nanomaterials.", iconType: 'network' },
+        ];
+
+        // Combine US and Canadian Data
+        const combined_US_CA_Data = [...usEntitiesData, ...caEntitiesData];
+
+        // --- Data Processing & Deduplication ---
+        const combinedEntitiesMap = new Map();
+        // Use a more specific key including type for deduplication
+        const getEntityKey = entity => `${entity.name.toLowerCase().trim()}_${entity.city.toLowerCase().trim()}_${(entity.state || entity.province || '').toLowerCase().trim()}_${entity.type.toLowerCase().trim()}`;
+        combined_US_CA_Data.forEach(entity => {
+            if (entity && entity.name && entity.city && entity.type && (entity.state || entity.province)) {
+                 combinedEntitiesMap.set(getEntityKey(entity), entity);
+            } else {
+                console.warn("Skipping entity due to missing key component:", entity);
+            }
+        });
+        const finalEntities = Array.from(combinedEntitiesMap.values());
+        console.log(`Processed ${finalEntities.length} unique US & Canadian entities for the map.`);
+
+        // --- Marker and Layer Creation ---
+        const markers = L.markerClusterGroup({ maxClusterRadius: 55, spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true });
+        const layers = { university: L.layerGroup(), institute: L.layerGroup(), company: L.layerGroup(), pilot_plant: L.layerGroup(), network: L.layerGroup(), other: L.layerGroup() };
+
+        // Function to create popup content (handles US state or Canadian province)
+        const createPopupContent = entity => {
+            const locationString = `${entity.city}, ${entity.state || entity.province}`;
+            const countryString = entity.country || 'Unknown Country';
+            const searchLocation = `${entity.city} ${entity.state || entity.province}`;
+            return `
+                <b class="popup-title">${entity.name}</b>
+                <div class="popup-section">
+                     <span class="content-text location"><strong>Type:</strong> ${entity.type}</span>
+                     <span class="content-text location"><strong>Location:</strong> ${locationString}, ${countryString}</span>
+                </div>
+                <div class="popup-section">
+                     <h4>Focus Areas:</h4>
+                     <span class="content-text focus">${Array.isArray(entity.focus) ? entity.focus.join(', ') : (entity.focus || 'N/A')}</span>
+                </div>
+                <div class="popup-section">
+                     <h4>Key Information / Notes:</h4>
+                     <span class="content-text info">${entity.keyInfo || 'N/A'}</span>
+                </div>
+                <div class="popup-section">
+                     <a href="https://www.google.com/search?q=${encodeURIComponent(entity.name + ' ' + searchLocation)}" target="_blank" rel="noopener noreferrer">Search Online...</a>
+                </div>`;
+        };
+
+        // Create markers and add to layers/clusters
+        finalEntities.forEach(entity => {
+            if (typeof entity.lat !== 'number' || typeof entity.lon !== 'number') {
+                console.warn("Skipping entity due to invalid coordinates:", entity.name, entity.city);
+                return;
+            }
+            const iconType = entity.iconType || 'other';
+            const marker = L.marker([entity.lat, entity.lon], { icon: icons[iconType] || icons.other, alt: entity.name })
+                .bindPopup(createPopupContent(entity), { maxWidth: 400 })
+                .bindTooltip(entity.name);
+
+            marker.on('mouseover', function (e) { this.getElement()?.classList.add('marker-hover'); });
+            marker.on('mouseout', function (e) { this.getElement()?.classList.remove('marker-hover'); });
+
+            const targetLayer = layers[iconType] || layers.other;
+            targetLayer.addLayer(marker);
+            if (iconType !== 'network') {
+                markers.addLayer(marker);
+            }
+        });
+
+        markers.addTo(map);
+        Object.values(layers).forEach(layer => layer.addTo(map));
+
+        // --- Map Controls ---
+        const baseMaps = { "Carto Positron": cartoPositron, "OpenStreetMap": osmTile, "Stamen Toner Lite": stamenTonerLite };
+        const overlayMaps = {
+            [`<span class="layer-control-icon" style="background-color:#42a5f5;"></span><span> Universities (${layers.university.getLayers().length})</span>`]: layers.university,
+            [`<span class="layer-control-icon" style="background-color:#66bb6a;"></span><span> Labs/Institutes (${layers.institute.getLayers().length})</span>`]: layers.institute,
+            [`<span class="layer-control-icon" style="background-color:#ab47bc;"></span><span> Companies (${layers.company.getLayers().length})</span>`]: layers.company,
+            [`<span class="layer-control-icon" style="background-color:#ffa726;"></span><span> Pilot Plants (${layers.pilot_plant.getLayers().length})</span>`]: layers.pilot_plant,
+            [`<span class="layer-control-icon" style="background-color:#ec407a;"></span><span> Networks/Initiatives (${layers.network.getLayers().length})</span>`]: layers.network,
+            [`<span class="layer-control-icon" style="background-color:#8c96a0;"></span><span> Other (${layers.other.getLayers().length})</span>`]: layers.other
+        };
+        L.control.layers(baseMaps, overlayMaps, { collapsed: true, position: 'topright' }).addTo(map);
+        L.control.scale({ imperial: false }).addTo(map);
+
+        // Recenter button for North America view
+        L.Control.Recenter = L.Control.extend({
+            options: { position: 'bottomleft' },
+            onAdd: map => {
+                const btn = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+                btn.innerHTML = '&#x21BA;'; btn.title = 'Center Map';
+                L.DomEvent.disableClickPropagation(btn);
+                btn.onclick = () => map.setView([54, -96], 3); // North America center & zoom
+                return btn;
+            }
+        });
+        new L.Control.Recenter().addTo(map);
+
+    </script>
+</body>
+</html>

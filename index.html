@@ -456,7 +456,7 @@
             [`<img src="${icons.network.options.iconUrl}" alt="NET" class="layer-control-icon"><span> Networks/Initiatives (${layers.network.getLayers().length})</span>`]: layers.network,
             [`<img src="${icons.other.options.iconUrl}" alt="?" class="layer-control-icon"><span> Other (${layers.other.getLayers().length})</span>`]: layers.other
         };
-        L.control.layers(baseMaps, overlayMaps, { collapsed: false, /* Keep open */ position: 'topright' }).addTo(map);
+        L.control.layers(baseMaps, overlayMaps, { collapsed: true, /* Keep open */ position: 'topright' }).addTo(map);
         L.control.scale({ imperial: false }).addTo(map);
 
         // Recenter button for North America view
